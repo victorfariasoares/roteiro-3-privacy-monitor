@@ -150,9 +150,9 @@ O Firefox mantém suporte ao **Manifest V2** e à **`webRequest` API** completa,
 
 1. Clique no ícone 🛡 na barra de ferramentas para abrir/fechar a sidebar
 2. Navegue até qualquer site e os dados já são coletados automaticamente
-3. Clique em cada seção para expandir os detalhes
-4. Use **↺** para atualizar os dados manualmente
-5. Consulte a seção **"💡 O que fazer?"** para recomendações baseadas no que foi detectado
+4. Clique em cada seção para expandir os detalhes
+5. Use **↺** para atualizar os dados manualmente após alguns segundos dentro da página. Você provavelmente verá algumas mudanças.
+6. Consulte a seção **"💡 O que fazer?"** para recomendações baseadas no que foi detectado
 
 ---
 
