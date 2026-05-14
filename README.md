@@ -3,7 +3,6 @@ Extensão validada em ambiente controlado
 # Privacy Monitor — Extensão Firefox
 
 **Disciplina:** Tecnologias Hackers · Insper 2026  
-**Prof.:** João Eduardo
 
 Extensão WebExtension para Firefox que detecta e apresenta em tempo real as principais ameaças à privacidade e rastreamento presentes na navegação web moderna.
 
@@ -11,7 +10,7 @@ Extensão WebExtension para Firefox que detecta e apresenta em tempo real as pri
 
 ## Funcionalidades implementadas
 
-### 1. Domínios de Terceira Parte *(2,5 pontos)*
+### 1. Domínios de Terceira Parte 
 Intercepta todas as requisições de rede via `webRequest` API e identifica cada domínio externo contactado pela página, listando:
 - Nome do domínio e identificação do rastreador (ex: "Google DoubleClick — ALTO RISCO")
 - Tipo de recurso carregado: Script, Imagem, iframe, XHR, CSS, Beacon
@@ -21,13 +20,13 @@ Intercepta todas as requisições de rede via `webRequest` API e identifica cada
 
 Base de dados com mais de 30 rastreadores conhecidos mapeados.
 
-### 2. Detecção de Hijacking e Hooking *(1 ponto)*
+### 2. Detecção de Hijacking e Hooking
 Monitora tentativas de sequestro do navegador via `MutationObserver` e monkey-patching:
 - Scripts externos adicionados dinamicamente ao DOM com padrões suspeitos (BeEF, XSS, cryptominers, keyloggers)
 - Redirecionamentos não autorizados via `location.replace()`
 - Uso de `eval()` — técnica comum em scripts maliciosos e ofuscados
 
-### 3. Web Storage API *(2,5 pontos)*
+### 3. Web Storage API
 Coleta e exibe todos os dados armazenados localmente pelo site:
 - **localStorage**: chave, valor (truncado) e tamanho em bytes — persiste após fechar o browser
 - **sessionStorage**: chave, valor e tamanho — some ao fechar a aba
@@ -39,13 +38,13 @@ Monitora cabeçalhos `Set-Cookie` de todas as respostas HTTP e classifica:
 - **Sessão** (sem `Expires`/`Max-Age`) vs. **Persistente**
 - **Supercookies**: HSTS (max-age > 1 ano) e ETag de domínios de terceiros — sobrevivem à limpeza de cookies
 
-### 5. Browser Fingerprinting *(1 ponto)*
+### 5. Browser Fingerprinting 
 Detecta chamadas às APIs via monkey-patching executado em `document_start`:
 - **Canvas API**: `toDataURL()` e `getImageData()` — fingerprinting via diferenças de renderização de GPU
 - **WebGL**: `getParameter(RENDERER)` e `getParameter(VENDOR)` — identificação do modelo da placa de vídeo
 - **AudioContext**: `createOscillator()` e `createDynamicsCompressor()` — fingerprinting via processamento de áudio
 
-### 6. Privacy Score *(2 pontos)*
+### 6. Privacy Score 
 
 **Metodologia:** pontuação começa em 100 e recebe penalidades subtrativas.
 
@@ -86,7 +85,7 @@ Detecta chamadas às APIs via monkey-patching executado em `document_start`:
 ## Arquitetura
 
 ```
-privacy-monitor/
+privacy-monitor-final/
 ├── manifest.json          ← Configuração MV2 (permissões, sidebar, scripts)
 ├── privacy_monitor.js     ← Background script: intercepta rede, analisa headers, calcula score
 ├── content_script.js      ← Injetado nas páginas: monkey-patch de APIs, coleta storage e tech stack
@@ -132,7 +131,7 @@ O Firefox mantém suporte ao **Manifest V2** e à **`webRequest` API** completa,
 1. Clone o repositório:
    ```bash
    git clone <URL_DO_REPOSITORIO>
-   cd privacy-monitor
+   cd privacy-monitor-final
    ```
 
 2. Abra o Firefox e acesse `about:debugging`
@@ -143,14 +142,14 @@ O Firefox mantém suporte ao **Manifest V2** e à **`webRequest` API** completa,
 
 5. O ícone 🛡 aparecerá na barra de ferramentas
 
-> **Nota:** instalação temporária — é removida ao fechar o Firefox. Para instalação permanente, a extensão deve ser assinada pela Mozilla via [addons.mozilla.org](https://addons.mozilla.org).
+> **Nota:** instalação temporária, é removida ao fechar o Firefox.
 
 ---
 
 ## Como usar
 
 1. Clique no ícone 🛡 na barra de ferramentas para abrir/fechar a sidebar
-2. Navegue até qualquer site — os dados são coletados automaticamente
+2. Navegue até qualquer site e os dados já são coletados automaticamente
 3. Clique em cada seção para expandir os detalhes
 4. Use **↺** para atualizar os dados manualmente
 5. Consulte a seção **"💡 O que fazer?"** para recomendações baseadas no que foi detectado
