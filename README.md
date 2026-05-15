@@ -1,5 +1,3 @@
-Extensão validada em ambiente controlado
-
 # Privacy Monitor — Extensão Firefox
 
 **Disciplina:** Tecnologias Hackers · Insper 2026  
