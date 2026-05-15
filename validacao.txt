@@ -1,4 +1,0 @@
-Data de início do desenvolvimento: 14/05/2026
-
-Projeto: Privacy Monitor — Extensão Firefox para detecção de ameaças à privacidade
-Disciplina: Tecnologias Hackers — Insper
